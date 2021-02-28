@@ -1,0 +1,130 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/*如果是用bs4已有內建此段語法*/
+*,*:before,*:after{
+              box-sizing:border-box;
+}
+
+img{
+  max-width: 100%;
+  height: auto;
+  object-fit:cover;
+  /*下block 去除底下img buttom px用*/
+  display: block;
+}
+
+a{
+  display:inline-block;
+  text-decoration: none;
+  /*&:hover{}*/
+}
+/*用bs4加入以下兩個
+ul{
+  padding: 0;
+}
+
+ul,li{
+  list-style:none
+}*/
+
+.wrap{
+	width: 100%;
+	font-family: 'Noto Sans TC', sans-serif;
+	display: flex;
+}
+.watermark{
+	width: 25%;
+	position: relative;//相對定位
+	.watermark_img{
+    width: 100%;
+	}
+	.watermark_body{
+    position: absolute;//絕對定位
+		top: 0;//使四邊的距離都為 0，就會自動撐開四個角
+		bottom: 0;
+		left: 0;
+		right: 0;
+		padding: 20px;
+		background-color: rgba(0,0,0,.6);//透明黑色遮罩
+		display:flex;
+		justify-content: center;
+		flex-direction: column;
+		opacity: 0;//讓文字完全透明
+		transition: opacity .4s;//轉場 透明度 0.5秒
+	}
+	&:hover .watermark_body{
+		//watermark:hover .watermark_body做事
+    opacity:1;
+	}
+	.watermark_title{
+		font-size: 40px;
+		color:#ff0;
+		font-weight: 500;
+		margin-bottom: 20px;
+	}
+	.watermark_title:after{//下底線用偽類做動畫效果
+		content:'';
+		display: block;
+		width: 0%;
+		height: 2px;
+		margin: 10px 0;//上下10px 左右0
+		background-color: #ff0;
+    transition:width 0.8s 0.2s;//轉場時間 轉場延遲
+	}
+	&:hover .watermark_title:after{//watermark:hover .watermark_title:after做事
+		width: 100%;
+	}
+	.watermark_text{
+		font-size: 20px;
+		color:#fff;
+		font-weight: 100;
+		margin-bottom: 10px;
+	}
+}
